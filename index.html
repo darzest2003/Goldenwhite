@@ -10,7 +10,7 @@
 <style>
 
 /* =========================
-GOLDEN WHITE - LIGHT PREMIUM THEME
+GOLDEN WHITE - LIGHT PREMIUM THEME (UPGRADED)
 ========================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
@@ -30,7 +30,6 @@ GOLDEN WHITE - LIGHT PREMIUM THEME
   padding:0;
   box-sizing:border-box;
   font-family:'Poppins',sans-serif;
-  scroll-behavior:smooth;
 }
 
 body{
@@ -67,32 +66,44 @@ body{
 .logo small{
   font-size:11px;
   color:var(--muted);
-  letter-spacing:2px;
 }
 
-.nav-links{
-  display:flex;
-  gap:20px;
+/* SIDEBAR (NEW) */
+.sidebar{
+  position:fixed;
+  top:80px;
+  left:0;
+  width:220px;
+  height:100%;
+  background:#fff;
+  border-right:1px solid var(--border);
+  padding:20px;
 }
 
-.nav-links a{
-  color:var(--text);
-  text-decoration:none;
-  font-weight:500;
-}
-
-.nav-links a:hover{
+.sidebar h3{
   color:var(--gold);
+  margin-bottom:15px;
+}
+
+.sidebar button{
+  width:100%;
+  margin-bottom:10px;
+}
+
+/* MAIN SHIFT */
+.main{
+  margin-left:240px;
+  padding:20px;
 }
 
 /* HERO */
 .hero{
-  min-height:100vh;
+  min-height:60vh;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:120px 20px;
+  padding:120px 20px 40px;
   background:linear-gradient(180deg,#fff,#f2f2f2);
 }
 
@@ -110,13 +121,12 @@ body{
   max-width:700px;
   margin:20px auto;
   color:var(--muted);
-  line-height:1.8;
 }
 
 /* BUTTON */
 .btn{
   display:inline-block;
-  margin-top:20px;
+  margin-top:10px;
   padding:14px 34px;
   background:var(--gold);
   color:#fff;
@@ -124,109 +134,66 @@ body{
   border-radius:50px;
   cursor:pointer;
   font-weight:700;
-  box-shadow:0 10px 25px rgba(201,162,39,.25);
-}
-
-.btn:hover{
-  transform:translateY(-3px);
 }
 
 /* SECTIONS */
 .section{
   max-width:1200px;
   margin:auto;
-  padding:80px 20px;
+  padding:40px 0;
 }
 
 .section-title{
-  text-align:center;
-  font-size:42px;
+  text-align:left;
+  font-size:32px;
   color:var(--gold);
-  margin-bottom:40px;
+  margin-bottom:20px;
 }
 
-/* CARDS */
-.features,
-.products,
-.reviews{
+/* PRODUCTS GRID */
+.products{
   display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:20px;
 }
 
-.features{
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-}
-
-.products{
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-}
-
-.reviews{
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-}
-
-.feature,
-.product-card,
-.review,
-.faq-item{
-  background:var(--surface);
+.product-card{
+  background:#fff;
   border:1px solid var(--border);
   border-radius:16px;
-  padding:20px;
-  box-shadow:var(--shadow);
+  overflow:hidden;
+  cursor:pointer;
+  transition:.3s;
 }
 
-/* PRODUCT */
+.product-card:hover{
+  transform:translateY(-5px);
+}
+
 .product-card img{
   width:100%;
-  border-radius:12px;
+  height:180px;
+  object-fit:cover;
 }
 
 .product-info{
-  padding:15px 0;
+  padding:15px;
 }
 
 .price{
   color:var(--gold);
-  font-size:24px;
-  font-weight:700;
+  font-weight:800;
 }
 
-/* FAQ */
-.faq-question{
-  font-weight:600;
-  cursor:pointer;
-}
-
-.faq-answer{
-  display:none;
-  margin-top:10px;
-  color:var(--muted);
-}
-
-/* FOOTER */
-footer{
+/* PRODUCT VIEW */
+.detail{
   background:#fff;
-  text-align:center;
-  padding:30px;
-  border-top:1px solid var(--border);
-  color:var(--muted);
-}
-
-/* WHATSAPP */
-.whatsapp{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  width:60px;
-  height:60px;
-  background:#25D366;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
-  font-size:28px;
+  padding:20px;
+  border-radius:16px;
+  border:1px solid var(--border);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
 }
 
 /* MODAL */
@@ -242,28 +209,31 @@ footer{
 .modal-content{
   background:#fff;
   padding:20px;
-  border-radius:20px;
+  border-radius:16px;
   width:90%;
-  max-width:500px;
+  max-width:450px;
 }
 
 input,textarea{
   width:100%;
-  padding:12px;
+  padding:10px;
   margin:8px 0;
-  border:1px solid #ddd;
-  border-radius:10px;
 }
 
-.submit-btn{
-  width:100%;
-  padding:14px;
+/* WHATSAPP */
+.whatsapp{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  width:60px;
+  height:60px;
   background:#25D366;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border-radius:50%;
   color:#fff;
-  border:none;
-  border-radius:10px;
-  font-weight:700;
-  cursor:pointer;
+  font-size:28px;
 }
 
 </style>
@@ -278,110 +248,102 @@ input,textarea{
       <span>GW</span>
       <small>Golden White</small>
     </div>
-    <div class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#products">Products</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#faq">FAQ</a>
-    </div>
   </div>
 </nav>
 
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h3>Categories</h3>
+  <button class="btn" onclick="showCategory('facewash')">Face Wash</button>
+  <button class="btn" onclick="showCategory('lotions')">Lotions</button>
+  <button class="btn" onclick="showCategory('shampoo')">Shampoo</button>
+  <button class="btn" onclick="showCategory('soaps')">Soaps</button>
+  <button class="btn" onclick="showCategory('creams')">Creams</button>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
 <!-- HERO -->
-<section class="hero" id="home">
+<section class="hero">
   <div>
     <h1>Golden White</h1>
     <h2>Reveal Your Natural Glow</h2>
-    <p>Premium skincare powered by Charcoal & Rice extracts for deep cleansing and glowing skin.</p>
-    <a class="btn" href="#products">Shop Now</a>
+    <p>Premium skincare for deep cleansing and glow.</p>
   </div>
 </section>
 
 <!-- PRODUCTS -->
-<section class="section" id="products">
+<section class="section">
   <h2 class="section-title">Products</h2>
-
-  <div class="products">
-
-    <div class="product-card">
-      <img src="charcoal.jpg">
-      <div class="product-info">
-        <h3>Charcoal Face Wash</h3>
-        <p class="price">Rs. 799</p>
-        <button class="btn" onclick="openOrder('Charcoal Face Wash')">Buy Now</button>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img src="rice.jpg">
-      <div class="product-info">
-        <h3>Rice Face Wash</h3>
-        <p class="price">Rs. 799</p>
-        <button class="btn" onclick="openOrder('Rice Face Wash')">Buy Now</button>
-      </div>
-    </div>
-
-  </div>
+  <div id="productGrid" class="products"></div>
 </section>
 
-<!-- REVIEWS -->
-<section class="section" id="reviews">
-  <h2 class="section-title">Reviews</h2>
-  <div class="reviews">
-
-    <div class="review">Amazing results — Ali</div>
-    <div class="review">Skin feels fresh — Ahmed</div>
-    <div class="review">Best glow — Usman</div>
-
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="section" id="faq">
-  <h2 class="section-title">FAQ</h2>
-
-  <div class="faq-item">
-    <div class="faq-question">Is it for all skin types?</div>
-    <div class="faq-answer">Yes</div>
-  </div>
-
-</section>
-
-<!-- FOOTER -->
-<footer>
-  Golden White © 2026
-</footer>
-
-<!-- WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/923444318078">💬</a>
+</div>
 
 <!-- MODAL -->
 <div class="modal" id="orderModal">
   <div class="modal-content">
-
     <h3>Order</h3>
-
-    <input id="name" placeholder="Name">
-    <input id="phone" placeholder="Phone">
-    <textarea id="address" placeholder="Address"></textarea>
     <input id="product" readonly>
-
-    <button class="submit-btn" onclick="submitOrder()">Submit</button>
-
+    <input placeholder="Name">
+    <input placeholder="Phone">
+    <textarea placeholder="Address"></textarea>
+    <button class="btn" onclick="alert('Order Sent!')">Submit</button>
   </div>
 </div>
 
+<!-- WHATSAPP -->
+<a class="whatsapp" href="https://wa.me/923444318078">💬</a>
+
 <script>
 
+/* PRODUCTS */
+const products = {
+  facewash:[
+    {name:"Charcoal Face Wash",price:799,img:"https://via.placeholder.com/400"},
+    {name:"Rice Face Wash",price:799,img:"https://via.placeholder.com/400"}
+  ],
+  lotions:[
+    {name:"Whitening Lotion",price:999,img:"https://via.placeholder.com/400"}
+  ],
+  shampoo:[
+    {name:"Herbal Shampoo",price:699,img:"https://via.placeholder.com/400"}
+  ],
+  soaps:[
+    {name:"Glow Soap",price:299,img:"https://via.placeholder.com/400"}
+  ],
+  creams:[
+    {name:"Face Cream",price:899,img:"https://via.placeholder.com/400"}
+  ]
+};
+
+/* SHOW CATEGORY */
+function showCategory(cat){
+  let grid=document.getElementById("productGrid");
+  grid.innerHTML="";
+
+  products[cat].forEach(p=>{
+    grid.innerHTML+=`
+      <div class="product-card" onclick='openOrder("${p.name}")'>
+        <img src="${p.img}">
+        <div class="product-info">
+          <h3>${p.name}</h3>
+          <p class="price">Rs ${p.price}</p>
+        </div>
+      </div>
+    `;
+  });
+}
+
+/* ORDER */
 function openOrder(product){
   document.getElementById("orderModal").style.display="flex";
   document.getElementById("product").value=product;
 }
 
-function submitOrder(){
-  alert("Order Sent!");
-  document.getElementById("orderModal").style.display="none";
-}
+/* DEFAULT */
+showCategory('facewash');
 
 </script>
 
