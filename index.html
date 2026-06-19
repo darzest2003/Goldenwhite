@@ -5,107 +5,89 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Golden White | Premium Skincare</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
 
-/* =========================
-GOLDEN WHITE - PREMIUM FIXED UI
-========================= */
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-
 :root{
   --gold:#c9a227;
-  --bg:#f7f7f7;
-  --text:#1a1a1a;
-  --muted:#666;
-  --border:rgba(0,0,0,.08);
-  --shadow:0 10px 30px rgba(0,0,0,.08);
+  --black:#0f0f10;
+  --white:#ffffff;
+  --muted:#b8b8b8;
 }
 
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
+  font-family:Poppins;
 }
 
 body{
-  background:var(--bg);
-  color:var(--text);
+  background:linear-gradient(135deg,#0f0f10,#1a1a1a,#000);
+  color:white;
   overflow-x:hidden;
 }
 
-/* ================= NAVBAR ================= */
-
+/* NAVBAR */
 .navbar{
   position:fixed;
   top:0;
   width:100%;
-  z-index:1000;
-  background:#fff;
-  border-bottom:1px solid var(--border);
-}
-
-.nav-container{
-  max-width:1200px;
-  margin:auto;
-  padding:14px 20px;
+  background:rgba(0,0,0,0.8);
+  padding:15px 20px;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  z-index:1000;
 }
 
-/* HAMBURGER */
 .menu-btn{
   font-size:26px;
-  cursor:pointer;
-  color:var(--text);
-}
-
-/* LOGO */
-.logo span{
-  font-size:34px;
-  font-weight:800;
+  background:none;
+  border:none;
   color:var(--gold);
+  cursor:pointer;
 }
 
-.logo small{
-  font-size:11px;
-  color:var(--muted);
-}
-
-/* ================= SIDEBAR ================= */
-
+/* SIDEBAR */
 .sidebar{
   position:fixed;
   top:0;
-  left:-280px;
-  width:260px;
+  left:-260px;
+  width:240px;
   height:100%;
-  background:#fff;
-  border-right:1px solid var(--border);
+  background:#111;
   padding:20px;
-  z-index:2000;
   transition:.3s;
+  z-index:2000;
 }
 
-.sidebar.active{
-  left:0;
+.sidebar.active{ left:0; }
+
+.sidebar h2{
+  color:var(--gold);
+  margin-bottom:20px;
 }
 
-/* CLOSE BUTTON */
+.sidebar button{
+  width:100%;
+  margin:8px 0;
+  padding:10px;
+  background:#1f1f1f;
+  border:none;
+  color:white;
+  cursor:pointer;
+}
+
 .close-btn{
   position:absolute;
   top:10px;
   right:10px;
-  font-size:18px;
+  background:var(--gold);
   border:none;
-  background:#f1f1f1;
-  width:32px;
-  height:32px;
-  border-radius:6px;
+  padding:5px 10px;
   cursor:pointer;
 }
 
@@ -113,48 +95,20 @@ body{
 .overlay{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.4);
+  background:rgba(0,0,0,0.6);
   display:none;
   z-index:1500;
 }
 
-/* SIDEBAR BUTTONS */
-.sidebar h3{
-  color:var(--gold);
-  margin:10px 0 20px;
-}
-
-.sidebar button{
-  width:100%;
-  padding:12px;
-  margin-bottom:10px;
-  border:none;
-  border-radius:10px;
-  background:#f2f2f2;
-  cursor:pointer;
-  font-weight:600;
-}
-
-.sidebar button:hover{
-  background:var(--gold);
-  color:#fff;
-}
-
-/* ================= HERO ================= */
-
+/* HERO */
 .hero{
-  min-height:60vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
   padding:120px 20px 40px;
-  background:linear-gradient(135deg,#fff,#f5f5f5);
+  text-align:center;
 }
 
 .hero h1{
-  font-size:60px;
   color:var(--gold);
+  font-size:55px;
 }
 
 .hero p{
@@ -162,112 +116,107 @@ body{
   margin-top:10px;
 }
 
-/* GOLD BANNER */
 .banner{
   margin-top:20px;
-  padding:18px;
-  background:linear-gradient(135deg,#c9a227,#f5d76e);
-  color:#000;
+  padding:15px;
+  background:linear-gradient(90deg,#c9a227,#000,#c9a227);
+  color:white;
   font-weight:700;
-  border-radius:12px;
-  box-shadow:0 10px 25px rgba(201,162,39,.3);
 }
 
-/* ================= PRODUCTS ================= */
-
+/* PRODUCTS */
 .section{
-  padding:40px 20px;
+  padding:30px;
 }
 
-.section-title{
-  font-size:28px;
-  margin-bottom:20px;
-  color:var(--gold);
-}
-
-.products{
+.grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:20px;
 }
 
-.product-card{
-  background:#fff;
-  border-radius:14px;
-  overflow:hidden;
-  border:1px solid var(--border);
+.card{
+  background:#111;
+  border:1px solid #333;
+  padding:10px;
   cursor:pointer;
   transition:.3s;
 }
 
-.product-card:hover{
-  transform:translateY(-6px);
+.card:hover{
+  transform:scale(1.05);
+  border-color:var(--gold);
 }
 
-.product-card img{
+.card img{
   width:100%;
-  height:180px;
-  object-fit:cover;
 }
 
-.product-info{
-  padding:12px;
+/* ABOUT */
+.about, .faq{
+  padding:30px;
 }
 
-.price{
-  color:var(--gold);
-  font-weight:800;
+.faq-item{
+  margin-top:10px;
 }
 
-/* ================= MODAL ================= */
-
+/* MODAL */
 .modal{
-  display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.5);
+  display:none;
   justify-content:center;
   align-items:center;
+  background:rgba(0,0,0,0.7);
   z-index:9999;
 }
 
-.modal-content{
-  background:#fff;
+.modal-box{
+  background:#111;
   padding:20px;
-  border-radius:14px;
   width:90%;
-  max-width:420px;
+  max-width:500px;
+  border:1px solid var(--gold);
+  position:relative;
+}
+
+.close-modal{
+  position:absolute;
+  right:10px;
+  top:10px;
+  background:var(--gold);
+  border:none;
+  padding:5px 10px;
+  cursor:pointer;
 }
 
 input,textarea{
   width:100%;
   padding:10px;
   margin:8px 0;
-  border:1px solid #ddd;
-  border-radius:8px;
+  background:#1f1f1f;
+  border:none;
+  color:white;
 }
 
-/* ================= WHATSAPP ================= */
+/* BUTTON */
+.btn{
+  background:var(--gold);
+  border:none;
+  padding:10px 15px;
+  cursor:pointer;
+  margin-top:10px;
+  font-weight:700;
+}
 
+/* WHATSAPP */
 .whatsapp{
   position:fixed;
-  right:20px;
   bottom:20px;
-  width:60px;
-  height:60px;
-  background:#25D366;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
-  font-size:26px;
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media(max-width:768px){
-  .hero h1{font-size:40px;}
+  right:20px;
+  font-size:35px;
+  color:#25D366;
 }
 
 </style>
@@ -276,109 +225,151 @@ input,textarea{
 <body>
 
 <!-- OVERLAY -->
-<div class="overlay" onclick="closeSidebar()"></div>
+<div class="overlay" onclick="toggleSidebar(false)"></div>
 
 <!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
-  <button class="close-btn" onclick="closeSidebar()">✕</button>
-  <h3>Categories</h3>
+  <button class="close-btn" onclick="toggleSidebar(false)">✕</button>
 
-  <button onclick="showCategory('facewash');closeSidebar()">Face Wash</button>
-  <button onclick="showCategory('lotions');closeSidebar()">Lotions</button>
-  <button onclick="showCategory('shampoo');closeSidebar()">Shampoo</button>
-  <button onclick="showCategory('soaps');closeSidebar()">Soaps</button>
-  <button onclick="showCategory('creams');closeSidebar()">Creams</button>
+  <h2>Categories</h2>
+  <button onclick="filter('facewash')">Face Wash</button>
+  <button onclick="filter('lotions')">Lotions</button>
+  <button onclick="filter('shampoo')">Shampoo</button>
+  <button onclick="filter('soaps')">Soaps</button>
+  <button onclick="filter('creams')">Creams</button>
 </div>
 
 <!-- NAVBAR -->
-<nav class="navbar">
-  <div class="nav-container">
-    <div class="menu-btn" onclick="openSidebar()">☰</div>
-    <div class="logo">
-      <span>GW</span>
-      <small>Golden White</small>
-    </div>
-  </div>
-</nav>
+<div class="navbar">
+  <button class="menu-btn" onclick="toggleSidebar(true)">☰</button>
+  <h2 style="color:#c9a227;">Golden White</h2>
+</div>
 
 <!-- HERO -->
-<section class="hero">
-  <div>
-    <h1>Golden White</h1>
-    <p>Luxury skincare for glow & confidence</p>
-
-    <div class="banner">
-      ✨ Premium Black • Gold • White Skincare Collection ✨
-    </div>
-  </div>
-</section>
+<div class="hero">
+  <h1>Golden White</h1>
+  <p>Luxury Skincare • Glow Naturally</p>
+  <div class="banner">Black • Gold • White Premium Collection</div>
+</div>
 
 <!-- PRODUCTS -->
-<section class="section">
-  <h2 class="section-title">Products</h2>
-  <div class="products" id="productGrid"></div>
-</section>
+<div class="section">
+  <h2>Products</h2>
+  <div class="grid" id="grid"></div>
+</div>
 
-<!-- MODAL -->
-<div class="modal" id="orderModal">
-  <div class="modal-content">
-    <h3>Order Product</h3>
-    <input id="product" readonly>
-    <input placeholder="Name">
-    <input placeholder="Phone">
-    <textarea placeholder="Address"></textarea>
-    <button onclick="alert('Order Sent!')" class="banner" style="width:100%;border:none;">Submit Order</button>
+<!-- ABOUT -->
+<div class="about">
+  <h2 style="color:#c9a227;">About Us</h2>
+  <p>Golden White is a premium skincare brand using rice & herbal extracts for deep cleansing and glow.</p>
+</div>
+
+<!-- FAQ -->
+<div class="faq">
+  <h2 style="color:#c9a227;">FAQ</h2>
+  <div class="faq-item">✔ Safe for all skin types</div>
+  <div class="faq-item">✔ Use twice daily</div>
+</div>
+
+<!-- PRODUCT MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <button class="close-modal" onclick="closeModal()">✕</button>
+
+    <img id="img" style="width:100%;margin-bottom:10px;">
+    <h2 id="name"></h2>
+    <p id="desc"></p>
+
+    <input id="qty" type="number" value="1">
+    <button class="btn" onclick="openOrder()">Buy Now</button>
   </div>
 </div>
 
-<!-- WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/923444318078">💬</a>
+<!-- ORDER MODAL -->
+<div class="modal" id="order">
+  <div class="modal-box">
+    <button class="close-modal" onclick="closeOrder()">✕</button>
+
+    <h2>Place Order</h2>
+    <input id="cname" placeholder="Name">
+    <input id="phone" placeholder="Phone">
+    <input id="email" placeholder="Email">
+    <textarea id="address" placeholder="Address"></textarea>
+
+    <button class="btn" onclick="send()">Submit Order</button>
+  </div>
+</div>
+
+<a class="whatsapp" href="https://wa.me/923444318078"><i class="fab fa-whatsapp"></i></a>
 
 <script>
 
-const products = {
+let selected=null;
+
+const data={
   facewash:[
-    {name:"Charcoal Face Wash",price:799,img:"https://via.placeholder.com/400"},
-    {name:"Rice Face Wash",price:799,img:"https://rice.png/400"}
-  ],
-  lotions:[{name:"Whitening Lotion",price:999,img:"https://via.placeholder.com/400"}],
-  shampoo:[{name:"Herbal Shampoo",price:699,img:"https://via.placeholder.com/400"}],
-  soaps:[{name:"Glow Soap",price:299,img:"https://via.placeholder.com/400"}],
-  creams:[{name:"Face Cream",price:899,img:"https://via.placeholder.com/400"}]
+    {name:"Rice Face Wash",img:"rice.png",desc:"100ml Rice Face Wash removes dirt, oil & gives natural glow."},
+    {name:"Charcoal Face Wash",img:"charcoal.png",desc:"Deep cleansing detox formula for acne-free skin."}
+  ]
 };
 
-function showCategory(cat){
-  let grid=document.getElementById("productGrid");
-  grid.innerHTML="";
-  products[cat].forEach(p=>{
-    grid.innerHTML+=`
-      <div class="product-card" onclick="openOrder('${p.name}')">
+function filter(cat){
+  const g=document.getElementById("grid");
+  g.innerHTML="";
+  data[cat].forEach(p=>{
+    g.innerHTML+=`
+      <div class="card" onclick='openProduct("${p.name}","${p.img}","${p.desc}")'>
         <img src="${p.img}">
-        <div class="product-info">
-          <h3>${p.name}</h3>
-          <div class="price">Rs ${p.price}</div>
-        </div>
+        <h3>${p.name}</h3>
       </div>
     `;
   });
+  toggleSidebar(false);
 }
 
-function openSidebar(){
-  document.getElementById("sidebar").style.left="0";
-  document.querySelector(".overlay").style.display="block";
+function openProduct(n,i,d){
+  selected={name:n,img:i,desc:d};
+
+  document.getElementById("img").src=i;
+  document.getElementById("name").innerText=n;
+  document.getElementById("desc").innerText=d;
+
+  document.getElementById("modal").style.display="flex";
 }
 
-function closeSidebar(){
-  document.getElementById("sidebar").style.left="-280px";
-  document.querySelector(".overlay").style.display="none";
+function closeModal(){
+  document.getElementById("modal").style.display="none";
 }
 
-function openOrder(name){
-  document.getElementById("orderModal").style.display="flex";
-  document.getElementById("product").value=name;
+function openOrder(){
+  document.getElementById("order").style.display="flex";
 }
 
-showCategory('facewash');
+function closeOrder(){
+  document.getElementById("order").style.display="none";
+}
+
+function send(){
+  const msg=
+`🛒 Order
+
+Product: ${selected.name}
+Qty: ${document.getElementById("qty").value}
+
+Name: ${document.getElementById("cname").value}
+Phone: ${document.getElementById("phone").value}
+Email: ${document.getElementById("email").value}
+Address: ${document.getElementById("address").value}`;
+
+  window.open("https://wa.me/923444318078?text="+encodeURIComponent(msg));
+}
+
+function toggleSidebar(v){
+  document.getElementById("sidebar").style.left=v?"0":"-260px";
+  document.querySelector(".overlay").style.display=v?"block":"none";
+}
+
+filter("facewash");
 
 </script>
 
