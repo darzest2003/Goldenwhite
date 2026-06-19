@@ -289,4 +289,38 @@ input,textarea{
   width:120px;
   margin:0 auto 12px auto;
   background:linear-gradient(90deg,transparent,#c9a227,transparent);
+}  
+
+/* PREMIUM BANNER */
+
+.premium-banner{
+  width:100%;
+  max-width:1000px;
+  margin:30px auto;
+  padding:0 20px;
+}
+
+.premium-banner img{
+  width:100%;
+  display:block;
+  border-radius:18px;
+  border:2px solid rgba(201,162,39,.4);
+  box-shadow:0 15px 40px rgba(201,162,39,.15);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .premium-banner{
+    padding:0 15px;
+    margin:20px auto;
+  }
+
+  .premium-banner img{
+    width:100%;
+    height:auto;
+    border-radius:14px;
+  }
+
 }
