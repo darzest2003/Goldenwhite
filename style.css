@@ -250,3 +250,18 @@ input,textarea{
   color:#25D366;
   z-index:999;
 }
+.header-tag{
+  font-size:11px;
+  color:rgba(255,255,255,0.6);
+  letter-spacing:2px;
+  text-transform:uppercase;
+  font-weight:500;
+  margin-left:10px;
+  display:inline-block;
+}
+
+/* optional premium glow effect */
+.header-tag::before{
+  content:"";
+  margin-right:8px;
+}
