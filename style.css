@@ -1,5 +1,5 @@
 /* =========================
-GOLDEN WHITE - PREMIUM ECOM STYLE
+GOLDEN WHITE - PREMIUM ECOM UPGRADED
 ========================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
@@ -31,18 +31,35 @@ body{
   overflow-x:hidden;
 }
 
+/* ================= OVERLAY (NEW) ================= */
+
+.sidebar-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.4);
+  display:none;
+  z-index:999;
+}
+
 /* ================= SIDEBAR ================= */
 
 .sidebar{
   position:fixed;
   top:0;
-  left:0;
+  left:-260px;
   width:240px;
   height:100vh;
   background:#fff;
   border-right:1px solid var(--border);
   padding:20px;
   box-shadow:var(--shadow);
+  transition:.3s;
+  z-index:1000;
+}
+
+/* ACTIVE STATE */
+.sidebar.active{
+  left:0;
 }
 
 .sidebar h3{
@@ -52,6 +69,7 @@ body{
   letter-spacing:1px;
 }
 
+/* SIDEBAR BUTTONS */
 .sidebar button{
   width:100%;
   padding:12px 14px;
@@ -71,11 +89,26 @@ body{
   transform:translateX(5px);
 }
 
+/* CLOSE BUTTON (if used) */
+.close-sidebar{
+  position:absolute;
+  top:10px;
+  right:10px;
+  width:30px;
+  height:30px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:700;
+  background:#f1f1f1;
+}
+
 /* ================= MAIN AREA ================= */
 
 .main{
   margin-left:240px;
   padding:25px;
+  transition:.3s;
 }
 
 /* ================= HERO ================= */
@@ -86,6 +119,7 @@ body{
   border-radius:20px;
   text-align:center;
   margin-bottom:30px;
+  box-shadow:var(--shadow);
 }
 
 .hero h1{
@@ -119,7 +153,6 @@ body{
   cursor:pointer;
   font-weight:700;
   transition:.3s;
-  text-align:center;
 }
 
 .btn:hover{
@@ -134,7 +167,7 @@ body{
 }
 
 .section-title{
-  font-size:26px;
+  font-size:28px;
   font-weight:700;
   margin-bottom:20px;
   color:var(--gold);
@@ -185,23 +218,6 @@ body{
   margin-top:5px;
 }
 
-/* ================= PRODUCT DETAIL VIEW ================= */
-
-.detail{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:25px;
-  background:#fff;
-  padding:20px;
-  border-radius:16px;
-  box-shadow:var(--shadow);
-}
-
-.detail img{
-  width:100%;
-  border-radius:12px;
-}
-
 /* ================= MODAL ================= */
 
 .modal{
@@ -221,10 +237,6 @@ body{
   width:90%;
   max-width:450px;
   box-shadow:var(--shadow);
-}
-
-.modal-content h3{
-  margin-bottom:10px;
 }
 
 input,textarea{
@@ -268,31 +280,14 @@ input:focus,textarea:focus{
 @media(max-width:768px){
 
   .sidebar{
-    width:180px;
-  }
-
-  .main{
-    margin-left:180px;
-  }
-
-  .hero h1{
-    font-size:40px;
-  }
-
-  .detail{
-    grid-template-columns:1fr;
-  }
-}
-
-@media(max-width:500px){
-
-  .sidebar{
-    position:relative;
-    width:100%;
-    height:auto;
+    width:220px;
   }
 
   .main{
     margin-left:0;
+  }
+
+  .hero h1{
+    font-size:40px;
   }
 }
