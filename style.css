@@ -6,14 +6,21 @@ Luxury Black & Gold Theme
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 :root{
---gold:#d4af37;
---gold-light:#f5d76e;
---black:#0b0b0b;
---dark:#121212;
---white:#ffffff;
---gray:#999;
---shadow:0 10px 30px rgba(0,0,0,.25);
+  --gold:#c9a227;
+  --gold-light:#e6c866;
+
+  --bg:#f7f7f7;
+  --surface:#ffffff;
+  --surface-2:#f1f1f1;
+
+  --text:#1a1a1a;
+  --text-muted:#666;
+
+  --border:rgba(0,0,0,.08);
+
+  --shadow:0 10px 30px rgba(0,0,0,.08);
 }
+
 
 *{
 margin:0;
@@ -24,9 +31,8 @@ scroll-behavior:smooth;
 }
 
 body{
-background:var(--black);
-color:var(--white);
-overflow-x:hidden;
+  background:var(--bg);
+  color:var(--text);
 }
 
 a{
