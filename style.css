@@ -291,53 +291,9 @@ input,textarea{
   background:linear-gradient(90deg,transparent,#c9a227,transparent);
 }  
 
-/* PREMIUM BANNER */
-
-.premium-banner{
-  width:100%;
-  max-width:900px;
-  margin:25px auto;
-  padding:0 15px;
-}
-
 .premium-banner img{
   width:100%;
-  max-height:280px;
-  object-fit:cover;
+  height:auto;
   display:block;
   border-radius:16px;
-  border:2px solid rgba(201,162,39,.35);
-  box-shadow:0 10px 30px rgba(201,162,39,.15);
-}
-
-/* TABLET */
-
-@media(max-width:768px){
-
-  .premium-banner{
-    margin:20px auto;
-    padding:0 12px;
-  }
-
-  .premium-banner img{
-    max-height:180px;
-    border-radius:14px;
-  }
-
-}
-
-/* MOBILE */
-
-@media(max-width:480px){
-
-  .premium-banner{
-    margin:15px auto;
-    padding:0 10px;
-  }
-
-  .premium-banner img{
-    max-height:130px;
-    border-radius:12px;
-  }
-
 }
