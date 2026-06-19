@@ -68,18 +68,49 @@ body{
   color:var(--muted);
 }
 
-/* SIDEBAR (NEW) */
+/* ================= SIDEBAR ================= */
+
 .sidebar{
   position:fixed;
-  top:80px;
-  left:0;
-  width:220px;
-  height:100%;
+  top:0;
+  left:-260px;
+  width:240px;
+  height:100vh;
   background:#fff;
   border-right:1px solid var(--border);
   padding:20px;
+  transition:.3s;
+  z-index:1001;
 }
 
+.sidebar.active{
+  left:0;
+}
+
+/* CLOSE BUTTON */
+.close-sidebar{
+  position:absolute;
+  top:10px;
+  right:10px;
+  width:30px;
+  height:30px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:700;
+  background:#f1f1f1;
+}
+
+/* OVERLAY */
+.sidebar-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.4);
+  display:none;
+  z-index:1000;
+}
+
+/* SIDEBAR BUTTONS */
 .sidebar h3{
   color:var(--gold);
   margin-bottom:15px;
@@ -90,7 +121,7 @@ body{
   margin-bottom:10px;
 }
 
-/* MAIN SHIFT */
+/* MAIN */
 .main{
   margin-left:240px;
   padding:20px;
@@ -123,6 +154,17 @@ body{
   color:var(--muted);
 }
 
+/* GOLD BANNER */
+.gold-banner{
+  margin:20px auto;
+  padding:40px 20px;
+  background:linear-gradient(135deg,#c9a227,#f5d76e);
+  color:#fff;
+  text-align:center;
+  border-radius:16px;
+  font-weight:700;
+}
+
 /* BUTTON */
 .btn{
   display:inline-block;
@@ -136,21 +178,7 @@ body{
   font-weight:700;
 }
 
-/* SECTIONS */
-.section{
-  max-width:1200px;
-  margin:auto;
-  padding:40px 0;
-}
-
-.section-title{
-  text-align:left;
-  font-size:32px;
-  color:var(--gold);
-  margin-bottom:20px;
-}
-
-/* PRODUCTS GRID */
+/* PRODUCTS */
 .products{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -185,17 +213,6 @@ body{
   font-weight:800;
 }
 
-/* PRODUCT VIEW */
-.detail{
-  background:#fff;
-  padding:20px;
-  border-radius:16px;
-  border:1px solid var(--border);
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-}
-
 /* MODAL */
 .modal{
   display:none;
@@ -204,6 +221,7 @@ body{
   background:rgba(0,0,0,.4);
   justify-content:center;
   align-items:center;
+  z-index:9999;
 }
 
 .modal-content{
@@ -241,6 +259,24 @@ input,textarea{
 
 <body>
 
+<!-- OVERLAY -->
+<div class="sidebar-overlay" onclick="closeSidebar()"></div>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+
+  <button class="close-sidebar" onclick="closeSidebar()">✕</button>
+
+  <h3>Categories</h3>
+
+  <button class="btn" onclick="showCategory('facewash'); closeSidebar()">Face Wash</button>
+  <button class="btn" onclick="showCategory('lotions'); closeSidebar()">Lotions</button>
+  <button class="btn" onclick="showCategory('shampoo'); closeSidebar()">Shampoo</button>
+  <button class="btn" onclick="showCategory('soaps'); closeSidebar()">Soaps</button>
+  <button class="btn" onclick="showCategory('creams'); closeSidebar()">Creams</button>
+
+</div>
+
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="nav-container">
@@ -251,16 +287,6 @@ input,textarea{
   </div>
 </nav>
 
-<!-- SIDEBAR -->
-<div class="sidebar">
-  <h3>Categories</h3>
-  <button class="btn" onclick="showCategory('facewash')">Face Wash</button>
-  <button class="btn" onclick="showCategory('lotions')">Lotions</button>
-  <button class="btn" onclick="showCategory('shampoo')">Shampoo</button>
-  <button class="btn" onclick="showCategory('soaps')">Soaps</button>
-  <button class="btn" onclick="showCategory('creams')">Creams</button>
-</div>
-
 <!-- MAIN -->
 <div class="main">
 
@@ -270,6 +296,11 @@ input,textarea{
     <h1>Golden White</h1>
     <h2>Reveal Your Natural Glow</h2>
     <p>Premium skincare for deep cleansing and glow.</p>
+
+    <div class="gold-banner">
+      Golden White Premium Skincare — Glow Naturally
+    </div>
+
   </div>
 </section>
 
@@ -298,6 +329,17 @@ input,textarea{
 
 <script>
 
+/* SIDEBAR CONTROL */
+function openSidebar(){
+  document.getElementById("sidebar").classList.add("active");
+  document.querySelector(".sidebar-overlay").style.display="block";
+}
+
+function closeSidebar(){
+  document.getElementById("sidebar").classList.remove("active");
+  document.querySelector(".sidebar-overlay").style.display="none";
+}
+
 /* PRODUCTS */
 const products = {
   facewash:[
@@ -318,7 +360,6 @@ const products = {
   ]
 };
 
-/* SHOW CATEGORY */
 function showCategory(cat){
   let grid=document.getElementById("productGrid");
   grid.innerHTML="";
@@ -336,13 +377,11 @@ function showCategory(cat){
   });
 }
 
-/* ORDER */
 function openOrder(product){
   document.getElementById("orderModal").style.display="flex";
   document.getElementById("product").value=product;
 }
 
-/* DEFAULT */
 showCategory('facewash');
 
 </script>
