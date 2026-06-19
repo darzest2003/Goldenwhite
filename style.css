@@ -297,25 +297,6 @@ input,textarea{
   margin:20px auto;
   text-align:center;
 }
-
-.product-banner img{
-  width:100%;
-  height:120px; /* banner height */
-  object-fit:cover;
-  border-radius:12px;
-  display:block;
-  border:1px solid rgba(201,162,39,.3);
-}
-
-/* MOBILE */
-@media(max-width:768px){
-
-  .product-banner{
-    max-width:95%;
-  }
-
-  .product-banner img{
-    height:70px;
-  }
-
-}
+<div class="product-banner">
+   <img src="banner.png" width="250">
+</div>
