@@ -1,345 +1,331 @@
- <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Golden White (GW) Face Wash</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Golden White | Premium Face Wash</title><meta name="description" content="Golden White Premium Charcoal & Rice Face Wash"><link rel="stylesheet" href="style.css"><link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></head><body><!-- NAVBAR --><nav class="navbar"><div class="nav-container"><div class="logo">
+<span>GW</span>
+<small>Golden White</small>
+</div><div class="nav-links">
+<a href="#home">Home</a>
+<a href="#products">Products</a>
+<a href="#reviews">Reviews</a>
+<a href="#faq">FAQ</a>
+</div></div></nav><!-- HERO --><section class="hero" id="home"><div><h1>Golden White</h1><h2>Reveal Your Natural Glow</h2><p>Premium skincare powered by Charcoal and Rice
+extracts for deep cleansing, oil control and
+healthy glowing skin.
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
+</p><a href="#products" class="btn">Shop Collection
 
-body{
-background:#f5f5f5;
-color:#333;
-}
+</a></div></section><!-- FEATURES --><section class="section reveal"><h2 class="section-title">Why Choose Golden White?
 
-header{
-background:linear-gradient(135deg,#000,#b8860b);
-color:white;
-text-align:center;
-padding:80px 20px;
-}
+</h2><div class="features"><div class="feature"><h3>Deep Cleansing</h3><p>Removes dirt, pollution and excess oil
+from pores.
 
-.logo{
-font-size:60px;
-font-weight:bold;
-letter-spacing:5px;
-color:#ffd700;
-}
+</p></div><div class="feature"><h3>Oil Control</h3><p>Keeps your face fresh and shine-free
+throughout the day.
 
-.hero h1{
-font-size:42px;
-margin-top:10px;
-}
+</p></div><div class="feature"><h3>Bright Glow</h3><p>Enhances natural radiance and skin
+brightness.
 
-.hero p{
-margin-top:15px;
-font-size:18px;
-}
+</p></div><div class="feature"><h3>Premium Formula</h3><p>Specially designed for all skin types.
 
-.btn{
-display:inline-block;
-margin-top:25px;
-background:#ffd700;
-color:black;
-padding:14px 30px;
-text-decoration:none;
-border-radius:50px;
-font-weight:bold;
-cursor:pointer;
-border:none;
-}
+</p></div></div></section><!-- PRODUCTS --><section class="section reveal" id="products"><h2 class="section-title">Our Products
 
-.section{
-padding:70px 20px;
-max-width:1200px;
-margin:auto;
-}
+</h2><div class="products"><!-- CHARCOAL --><div class="product-card"><img src="charcoal.jpg" alt="Charcoal Face Wash"><div class="product-info"><h3>Charcoal Face Wash</h3><div class="rating">★★★★★
 
-.section-title{
-text-align:center;
-font-size:38px;
-margin-bottom:40px;
-color:#111;
-}
+</div><p>Deep pore cleansing with charcoal technology.
 
-.products{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:30px;
-}
+</p><div class="price">Rs. 799
 
-.card{
-background:white;
-border-radius:20px;
-overflow:hidden;
-box-shadow:0 10px 30px rgba(0,0,0,.1);
-}
+</div><button
+class="btn"
+onclick="openOrder('Charcoal Face Wash')">
 
-.card img{
-width:100%;
-height:300px;
-object-fit:cover;
-}
+Buy Now
 
-.card-body{
-padding:20px;
-text-align:center;
-}
+</button></div></div><!-- RICE --><div class="product-card"><img src="rice.jpg" alt="Rice Face Wash"><div class="product-info"><h3>Rice Face Wash</h3><div class="rating">★★★★★
 
-.price{
-font-size:28px;
-font-weight:bold;
-color:#b8860b;
-margin:10px 0;
-}
+</div><p>Rice extract formula for brighter skin.
 
-.features{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
+</p><div class="price">Rs. 799
 
-.feature{
-background:white;
-padding:30px;
-border-radius:15px;
-text-align:center;
-box-shadow:0 5px 15px rgba(0,0,0,.08);
-}
+</div><button
+class="btn"
+onclick="openOrder('Rice Face Wash')">
 
-footer{
-background:#111;
-color:white;
-text-align:center;
-padding:25px;
-}
+Buy Now
 
-.modal{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.7);
-justify-content:center;
-align-items:center;
-z-index:999;
-}
+</button></div></div></div></section><!-- REVIEWS --><section class="section reveal" id="reviews"><h2 class="section-title">Customer Reviews
 
-.modal-content{
-background:white;
-width:95%;
-max-width:500px;
-padding:25px;
-border-radius:20px;
-}
+</h2><div class="reviews"><div class="review"><p>★★★★★
 
-.modal-content h2{
-margin-bottom:20px;
-}
+Amazing results after only one week.
 
-input,select,textarea{
-width:100%;
-padding:12px;
-margin-bottom:12px;
-border:1px solid #ccc;
-border-radius:8px;
-}
+</p><h4>Ali Khan</h4></div><div class="review"><p>★★★★★
 
-.close{
-float:right;
-font-size:28px;
-cursor:pointer;
-}
+Skin feels cleaner and fresher.
 
-.submit-btn{
-width:100%;
-background:#25D366;
-color:white;
-padding:14px;
-border:none;
-border-radius:8px;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-}
-</style>
-</head>
-<body>
+</p><h4>Ahmed Raza</h4></div><div class="review"><p>★★★★★
 
-<header>
-<div class="logo">GW</div>
-<div class="hero">
-<h1>Golden White Face Wash</h1>
-<p>Premium Skin Care For Healthy & Glowing Skin</p>
-<a href="#products" class="btn">Shop Now</a>
-</div>
-</header>
+Rice Face Wash gives a natural glow.
 
-<section class="section">
-<h2 class="section-title">Why Choose Golden White?</h2>
+</p><h4>Usman</h4></div></div></section><!-- FAQ --><section class="section reveal" id="faq"><h2 class="section-title">Frequently Asked Questions
 
-<div class="features">
-<div class="feature">
-<h3>Deep Cleansing</h3>
-<p>Removes dirt and impurities effectively.</p>
-</div>
+</h2><div class="faq-item"><div class="faq-question">Is Golden White suitable for all skin types?
 
-<div class="feature">
-<h3>Oil Control</h3>
-<p>Fresh skin all day long.</p>
-</div>
+</div><div class="faq-answer">Yes, both formulas are designed for all skin types.
 
-<div class="feature">
-<h3>Bright Glow</h3>
-<p>Enhances natural skin radiance.</p>
-</div>
+</div></div><div class="faq-item"><div class="faq-question">How often should I use it?
 
-<div class="feature">
-<h3>Premium Ingredients</h3>
-<p>Specially formulated for all skin types.</p>
-</div>
-</div>
-</section>
+</div><div class="faq-answer">Use twice daily for best results.
 
-<section class="section" id="products">
+</div></div><div class="faq-item"><div class="faq-question">Is it suitable for oily skin?
 
-<h2 class="section-title">Our Products</h2>
+</div><div class="faq-answer">Yes, especially the Charcoal Face Wash.
 
-<div class="products">
+</div></div></section><!-- FOOTER --><footer><h3>Golden White (GW)</h3><p>Premium Face Wash Collection
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=800" alt="">
-<div class="card-body">
-<h3>Charcoal Face Wash</h3>
-<p>Deep pore cleansing and oil control.</p>
-<div class="price">Rs. 799</div>
-<button class="btn" onclick="openOrder('Charcoal Face Wash')">Buy Now</button>
-</div>
-</div>
+</p><br><p>WhatsApp:
+03444318078
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=800" alt="">
-<div class="card-body">
-<h3>Rice Face Wash</h3>
-<p>Brightening and skin nourishment.</p>
-<div class="price">Rs. 799</div>
-<button class="btn" onclick="openOrder('Rice Face Wash')">Buy Now</button>
-</div>
-</div>
+</p></footer><!-- WHATSAPP FLOAT --><a
+href="https://wa.me/923444318078"
+target="_blank"
+class="whatsapp">
 
-</div>
+<i class="fab fa-whatsapp"></i>
 
-</section>
+</a><!-- ORDER MODAL --><div
+class="modal"
+id="orderModal"><div class="modal-content"><span
+class="close"
+onclick="closeOrder()">
 
-<footer>
-© 2026 Golden White (GW) | Premium Face Wash
-</footer>
+×
 
-<div class="modal" id="orderModal">
-<div class="modal-content">
+</span><h2>Place Your Order
 
-<span class="close" onclick="closeOrder()">&times;</span>
+</h2><form id="orderForm"><input
+type="text"
+id="name"
+placeholder="Full Name"
+required>
 
-<h2>Place Your Order</h2>
+<input
+type="tel"
+id="phone"
+placeholder="Phone Number"
+required>
 
-<form id="orderForm">
+<input
+type="email"
+id="email"
+placeholder="Email Address">
 
-<input type="text" id="customerName" placeholder="Full Name" required>
+<textarea
+id="address"
+placeholder="Complete Address"
+required>
 
-<input type="tel" id="phone" placeholder="Phone Number" required>
+</textarea><input
+type="text"
+id="product"
+readonly>
 
-<input type="email" id="email" placeholder="Email Address">
+<button
+type="submit"
+class="submit-btn">
 
-<textarea id="address" placeholder="Complete Address" required></textarea>
-
-<input type="number" id="quantity" min="1" value="1" required>
-
-<input type="text" id="product" readonly>
-
-<button type="submit" class="submit-btn">
 Submit Order
-</button>
 
-</form>
+</button></form></div></div><script>
 
-</div>
-</div>
-
-<script>
+/* ORDER MODAL */
 
 function openOrder(product){
-document.getElementById("orderModal").style.display="flex";
-document.getElementById("product").value=product;
+
+document.getElementById(
+"orderModal"
+).style.display="flex";
+
+document.getElementById(
+"product"
+).value=product;
+
 }
 
 function closeOrder(){
-document.getElementById("orderModal").style.display="none";
+
+document.getElementById(
+"orderModal"
+).style.display="none";
+
 }
 
-document.getElementById("orderForm").addEventListener("submit",function(e){
+/* ORDER NUMBER */
+
+function generateOrderNumber(){
+
+const now=new Date();
+
+return "GW-"+
+now.getFullYear()+
+(now.getMonth()+1)+
+now.getDate()+
+"-"+
+Math.floor(
+1000+
+Math.random()*9000
+);
+
+}
+
+/* WHATSAPP ORDER */
+
+document
+.getElementById(
+"orderForm"
+)
+.addEventListener(
+"submit",
+function(e){
 
 e.preventDefault();
 
-let orderNumber =
-"GW-" +
-Date.now();
+let orderNumber=
+generateOrderNumber();
 
-let name =
-document.getElementById("customerName").value;
+let name=
+document.getElementById(
+"name"
+).value;
 
-let phone =
-document.getElementById("phone").value;
+let phone=
+document.getElementById(
+"phone"
+).value;
 
-let email =
-document.getElementById("email").value;
+let email=
+document.getElementById(
+"email"
+).value;
 
-let address =
-document.getElementById("address").value;
+let address=
+document.getElementById(
+"address"
+).value;
 
-let quantity =
-document.getElementById("quantity").value;
+let product=
+document.getElementById(
+"product"
+).value;
 
-let product =
-document.getElementById("product").value;
+let message=
 
-let message =
-`🛒 *NEW ORDER - GOLDEN WHITE*
+`🛒 GOLDEN WHITE ORDER
 
-Order Number: ${orderNumber}
+Order No:
+${orderNumber}
 
-Product: ${product}
-Quantity: ${quantity}
+Product:
+${product}
 
-Customer Name: ${name}
-Phone: ${phone}
-Email: ${email}
+Customer:
+${name}
+
+Phone:
+${phone}
+
+Email:
+${email}
 
 Address:
 ${address}
 
 Thank You`;
 
-let whatsapp =
-"https://wa.me/923444318078?text="
-+ encodeURIComponent(message);
+window.open(
 
-window.open(whatsapp,"_blank");
+"https://wa.me/923444318078?text="+
+encodeURIComponent(message),
 
-alert("Order Prepared Successfully!");
+"_blank"
+
+);
+
+alert(
+
+"Order Created Successfully"
+
+);
 
 closeOrder();
 
 });
 
-</script>
+/* FAQ */
 
-</body>
-  </html>
+document
+.querySelectorAll(
+".faq-question"
+)
+.forEach(item=>{
+
+item.addEventListener(
+"click",
+()=>{
+
+let answer=
+item.nextElementSibling;
+
+if(
+answer.style.display==="block"
+){
+
+answer.style.display="none";
+
+}
+else{
+
+answer.style.display="block";
+
+}
+
+});
+
+});
+
+/* SCROLL ANIMATION */
+
+window.addEventListener(
+"scroll",
+()=>{
+
+document
+.querySelectorAll(
+".reveal"
+)
+.forEach(el=>{
+
+let top=
+el
+.getBoundingClientRect()
+.top;
+
+if(
+top<
+window.innerHeight-100
+){
+
+el.classList.add(
+"active"
+);
+
+}
+
+});
+
+});
+
+</script></body>
+</html>
