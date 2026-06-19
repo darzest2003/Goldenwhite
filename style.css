@@ -291,9 +291,4 @@ input,textarea{
   background:linear-gradient(90deg,transparent,#c9a227,transparent);
 }  
 
-.premium-banner img{
-  width:100%;
-  height:auto;
-  display:block;
-  border-radius:16px;
-}
+
