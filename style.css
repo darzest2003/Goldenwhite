@@ -322,3 +322,65 @@ input,textarea{
   display:block;
   border-radius:15px;
 }
+.qty-box{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  margin:15px 0;
+}
+
+.qty-box button{
+  width:40px;
+  height:40px;
+  border:none;
+  background:#c9a227;
+  color:#000;
+  font-size:20px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.qty-box input{
+  width:70px;
+  text-align:center;
+}
+#reviewBox{
+  background:#111;
+  border:1px solid #c9a227;
+  padding:20px;
+  border-radius:10px;
+  text-align:center;
+  margin-top:20px;
+}
+.offer{
+  text-align:center;
+  padding:30px;
+}
+
+#countdown{
+  color:#c9a227;
+  font-size:28px;
+  font-weight:bold;
+  margin-top:10px;
+}
+.gallery{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.gallery img{
+  width:300px;
+  border-radius:10px;
+  border:2px solid #c9a227;
+}
+.feature-box{
+  background:#111;
+  border:1px solid #c9a227;
+  padding:15px;
+  margin:10px 0;
+  border-radius:10px;
+  text-align:center;
+}
