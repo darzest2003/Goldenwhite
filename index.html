@@ -255,20 +255,17 @@ Address: ${address}`;
 
   // 1️⃣ FIRST: send to Google Script
   fetch("https://script.google.com/macros/s/AKfycbw8cYJIHfyj4m0F3eW7XYGtzEE6OYhm_cL0GwUaZQmAHBuvLjlMJPUjFZ1TNB6NU0sc/exec", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      orderNo,
-      product: selected.name,
-      qty,
-      name,
-      phone,
-      email,
-      address
-    })
+  method: "POST",
+  body: new URLSearchParams({
+    orderNo: orderNo,
+    product: selected.name,
+    qty: qty,
+    name: name,
+    phone: phone,
+    email: email,
+    address: address
   })
+})
   .then(res => res.text())
   .then(res => {
     console.log("Saved:", res);
