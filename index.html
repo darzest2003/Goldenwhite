@@ -268,34 +268,37 @@ Payment:
 Cash On Delivery`;
 
   // 1️⃣ WhatsApp (your existing system)
-  window.open(
-    "https://wa.me/923444318078?text=" +
-    encodeURIComponent(msg)
-  );
-
-  // 2️⃣ GOOGLE SHEET CONNECTION (NEW)
+  // 1️⃣ FIRST: send data to Google Sheet (IMPORTANT)
   fetch("https://script.google.com/macros/s/AKfycbw8cYJIHfyj4m0F3eW7XYGtzEE6OYhm_cL0GwUaZQmAHBuvLjlMJPUjFZ1TNB6NU0sc/exec", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    orderNo: orderNo,
-    product: selected.name,
-    qty: qty,
-    name: name,
-    phone: phone,
-    email: email,
-    address: address
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      orderNo: orderNo,
+      product: selected.name,
+      qty: qty,
+      name: name,
+      phone: phone,
+      email: email,
+      address: address
+    })
   })
-})
-.then(res => res.text())
-.then(data => {
-  console.log("Saved:", data);
-})
-.catch(err => {
-  console.log("Error:", err);
-});
+  .then(res => res.text())
+  .then(data => {
+    console.log("Saved to sheet:", data);
+  })
+  .catch(err => {
+    console.log("Sheet error:", err);
+  });
+
+  // 2️⃣ THEN open WhatsApp (after request is sent)
+  setTimeout(() => {
+    window.open(
+      "https://wa.me/923444318078?text=" +
+      encodeURIComponent(msg)
+    );
+  }, 500);
 
   // UI updates
   document.getElementById("orderNumber").innerText =
