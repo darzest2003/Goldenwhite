@@ -235,26 +235,57 @@ function closeSuccess(){
   // optional: redirect to homepage
   window.location.href = "index.html";
 }
-function send(){
+function send() {
 
-  alert("Submit clicked");
+  if(!selected){
+    alert("Please select a product first.");
+    return;
+  }
 
-  const orderNo = "GW-" + Math.floor(Math.random()*90000+10000);
+  const name = document.getElementById("cname").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const address = document.getElementById("address").value.trim();
   const qty = document.getElementById("qty").value;
-  const name = document.getElementById("cname").value;
-  const phone = document.getElementById("phone").value;
-  const email = document.getElementById("email").value;
-  const address = document.getElementById("address").value;
+
+  if(name === ""){
+    alert("Please enter your name");
+    return;
+  }
+
+  if(phone === ""){
+    alert("Please enter phone number");
+    return;
+  }
+
+  if(address === ""){
+    alert("Please enter address");
+    return;
+  }
+
+  const orderNo = "GW-" + Date.now();
 
   const msg =
 `🛒 GOLDEN WHITE ORDER
 
 Order No: ${orderNo}
 Product: ${selected.name}
-Quantity: ${qty}`;
+Quantity: ${qty}
 
-  // ✅ Google Sheet send (CLEAN)
-  fetch("https://script.google.com/macros/s/AKfycbwvSBOprTMX19uO2FbJWIQHYC7J__7Q-48ha_lLnnG47MSACwNmsnFl3e80ADIv60Q/exec", {
+Name: ${name}
+Phone: ${phone}
+Email: ${email}
+Address: ${address}`;
+
+  // Open WhatsApp first
+  window.open(
+    "https://wa.me/923444318078?text=" +
+    encodeURIComponent(msg),
+    "_blank"
+  );
+
+  // Save to sheet
+  fetch("https://script.google.com/macros/s/AKfycbxhv3S2pCGWlf6JB2gfRLzyrAp4oNdDLf0K3nTo2PUkXXBkaBjOErdXel3tbh6DZWk-/exec", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -270,21 +301,21 @@ Quantity: ${qty}`;
     })
   })
   .then(res => res.text())
-  .then(res => {
-    console.log("SHEET RESPONSE:", res);
-
-    // WhatsApp only after success
-    window.open(
-      "https://wa.me/923444318078?text=" + encodeURIComponent(msg)
-    );
+  .then(data => {
 
     document.getElementById("orderNumber").innerText =
       "Order Number: " + orderNo;
 
     document.getElementById("success").style.display = "flex";
+
+    setTimeout(function(){
+      window.location.href = "index.html";
+    },3000);
+
   })
   .catch(err => {
-    console.log("FETCH ERROR:", err);
+    alert("Order save failed");
+    console.log(err);
   });
 
   closeOrder();
