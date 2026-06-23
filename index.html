@@ -259,6 +259,58 @@ input,textarea{
     <img src="banner.png" alt="Golden White Collection" style="width:450px;max-width:95%;height:auto;border-radius:12px;">
 </div>  
 
+  <div class="slider">
+  <div class="slide active">
+    <img src="banner.png" alt="Golden White">
+  </div>
+  <div class="slide">
+    <img src="rice.png" alt="Rice Face Wash">
+  </div>
+  <div class="slide">
+    <img src="charcoal.png" alt="Charcoal Face Wash">
+  </div>
+  </div>
+  <section class="offer">
+  <h2>Limited Time Offer</h2>
+  <div id="countdown"></div>
+  </section>
+  <section class="section">
+  <h2>Before & After</h2>
+
+  <div class="gallery">
+    <img src="before1.jpg" alt="Before">
+    <img src="after1.jpg" alt="After">
+  </div>
+  </section>
+  <section class="section">
+
+<div class="feature-box">
+🚚 Free Shipping Nationwide
+</div>
+
+<div class="feature-box">
+💵 Cash On Delivery Available
+</div>
+
+<div class="feature-box">
+📦 Delivery 3-5 Working Days
+</div>
+
+  </section>
+  <section class="section">
+
+<h2>Customer Reviews</h2>
+
+<div id="reviewBox">
+
+★★★★★ Amazing Results - Ali
+
+</div>
+
+  </section>
+  
+  
+
 <!-- PRODUCTS -->
 <div class="section">
   <h2>Products</h2>
@@ -288,7 +340,15 @@ input,textarea{
     <h2 id="name"></h2>
     <p id="desc"></p>
 
-    <input id="qty" type="number" value="1">
+    <div class="qty-box">
+
+<button onclick="changeQty(-1)">-</button>
+
+<input id="qty" value="1">
+
+<button onclick="changeQty(1)">+</button>
+
+    </div>
     <button class="btn" onclick="openOrder()">Buy Now</button>
   </div>
 </div>
@@ -307,7 +367,23 @@ input,textarea{
     <button class="btn" onclick="send()">Submit Order</button>
   </div>
 </div>
+<div class="modal" id="success">
 
+<div class="modal-box">
+
+<h2>Order Submitted</h2>
+
+<p>Your order has been prepared successfully.</p>
+
+<button onclick="closeSuccess()">
+
+OK
+
+</button>
+
+</div>
+
+</div>
 <a class="whatsapp" href="https://wa.me/923444318078"><i class="fab fa-whatsapp"></i></a>
 
 <script>
@@ -378,6 +454,85 @@ function toggleSidebar(v){
 }
 
 filter("facewash");
+
+  <script>
+
+let slideIndex=0;
+
+setInterval(()=>{
+
+const slides=document.querySelectorAll(".slide");
+
+slides.forEach(s=>s.classList.remove("active"));
+
+slideIndex++;
+
+if(slideIndex>=slides.length){
+slideIndex=0;
+}
+
+slides[slideIndex].classList.add("active");
+
+},4000);
+
+function changeQty(val){
+
+let q=document.getElementById("qty");
+
+let num=parseInt(q.value)||1;
+
+num+=val;
+
+if(num<1) num=1;
+
+q.value=num;
+
+}
+
+const reviews=[
+
+"★★★★★ Amazing Results - Ali",
+"★★★★★ Best Face Wash - Ahmed",
+"★★★★★ Skin Feels Fresh - Usman"
+
+];
+
+let r=0;
+
+setInterval(()=>{
+
+r++;
+
+if(r>=reviews.length) r=0;
+
+document.getElementById("reviewBox").innerText=reviews[r];
+
+},3000);
+
+const endDate=
+new Date().getTime()+7*24*60*60*1000;
+
+setInterval(()=>{
+
+const now=new Date().getTime();
+
+const gap=endDate-now;
+
+const d=Math.floor(gap/(1000*60*60*24));
+
+const h=Math.floor(
+(gap%(1000*60*60*24))
+/
+(1000*60*60)
+);
+
+document.getElementById("countdown")
+.innerHTML=
+d+" Days "+h+" Hours";
+
+},1000);
+
+</script>
 
 </script>
   <footer class="footer">
