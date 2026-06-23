@@ -293,13 +293,18 @@ input,textarea{
 /* PRODUCT BANNER */
 .product-banner{
   width:100%;
-  max-width:700px; /* desktop size */
+  max-width:700px;
   margin:20px auto;
   text-align:center;
 }
-<div class="product-banner">
-   <img src="banner.png" width="250">
-</div>
+
+.product-banner img{
+  width:250px;
+  max-width:95%;
+  height:auto;
+  border-radius:12px;
+}
+
 .slider{
   width:90%;
   max-width:1000px;
