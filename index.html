@@ -231,53 +231,36 @@ function closeSuccess(){
   // optional: redirect to homepage
   window.location.href = "index.html";
 }
-function send(){
+async function send(){
 
   const orderNo =
-  "GW-" +
-  Math.floor(Math.random()*90000+10000);
+  "GW-" + Math.floor(Math.random()*90000+10000);
 
-  const msg =
-`🛒 GOLDEN WHITE ORDER
+  const payload = {
+    name: document.getElementById("cname").value,
+    phone: document.getElementById("phone").value,
+    email: document.getElementById("email").value,
+    address: document.getElementById("address").value,
+    product: selected.name,
+    qty: document.getElementById("qty").value
+  };
 
-Order No: ${orderNo}
+  const res = await fetch("https://script.google.com/macros/s/AKfycbx3QKW7m6c2243HyFihMMG2Vjq7q_vyTIxUdeXS3kuODRjdX3KvpE79w-U16bpqxphD/exec", {
+    method: "POST",
+    body: JSON.stringify(payload)
+  });
 
-Product: ${selected.name}
-Quantity: ${document.getElementById("qty").value}
-
-Customer Name:
-${document.getElementById("cname").value}
-
-Phone:
-${document.getElementById("phone").value}
-
-Email:
-${document.getElementById("email").value}
-
-Address:
-${document.getElementById("address").value}
-
-Payment:
-Cash On Delivery
-
-Status:
-New Order`;
-
-  window.open(
-    "https://wa.me/923444318078?text=" +
-    encodeURIComponent(msg)
-  );
+  const data = await res.json();
 
   document.getElementById("orderNumber").innerText =
-  "Order Number: " + orderNo;
+    "Order Number: " + data.orderNo;
 
   document.getElementById("success").style.display = "flex";
 
   closeOrder();
 
-  // 🔥 ADD THIS: redirect to homepage after 3 seconds
   setTimeout(() => {
-    window.location.href = "index.html"; // change if your homepage has another name
+    window.location.href = "index.html";
   }, 3000);
 }
 
