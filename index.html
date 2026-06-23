@@ -256,7 +256,10 @@ Address: ${address}`;
   // 1️⃣ FIRST: send to Google Script
   fetch("https://script.google.com/macros/s/AKfycbwvSBOprTMX19uO2FbJWIQHYC7J__7Q-48ha_lLnnG47MSACwNmsnFl3e80ADIv60Q/exec", {
   method: "POST",
-  body: new URLSearchParams({
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
     orderNo: orderNo,
     product: selected.name,
     qty: qty,
@@ -268,10 +271,10 @@ Address: ${address}`;
 })
 .then(res => res.text())
 .then(res => {
-  console.log("SUCCESS:", res);
+  console.log("SHEET RESPONSE:", res);
 })
 .catch(err => {
-  console.log("ERROR:", err);
+  console.log("FETCH ERROR:", err);
 });
 
     // 2️⃣ THEN open WhatsApp AFTER save is done
