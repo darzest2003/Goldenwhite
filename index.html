@@ -233,12 +233,9 @@ function closeSuccess(){
 }
 function send(){
 
-  const orderNo =
-  "GW-" +
-  Math.floor(Math.random()*90000+10000);
+  const orderNo = "GW-" + Math.floor(Math.random()*90000+10000);
 
   const qty = document.getElementById("qty").value;
-
   const name = document.getElementById("cname").value;
   const phone = document.getElementById("phone").value;
   const email = document.getElementById("email").value;
@@ -248,70 +245,52 @@ function send(){
 `🛒 GOLDEN WHITE ORDER
 
 Order No: ${orderNo}
-
 Product: ${selected.name}
 Quantity: ${qty}
 
-Customer Name:
-${name}
+Name: ${name}
+Phone: ${phone}
+Email: ${email}
+Address: ${address}`;
 
-Phone:
-${phone}
-
-Email:
-${email}
-
-Address:
-${address}
-
-Payment:
-Cash On Delivery`;
-
-  // 1️⃣ WhatsApp (your existing system)
-  // 1️⃣ FIRST: send data to Google Sheet (IMPORTANT)
+  // 1️⃣ FIRST: send to Google Script
   fetch("https://script.google.com/macros/s/AKfycbw8cYJIHfyj4m0F3eW7XYGtzEE6OYhm_cL0GwUaZQmAHBuvLjlMJPUjFZ1TNB6NU0sc/exec", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      orderNo: orderNo,
+      orderNo,
       product: selected.name,
-      qty: qty,
-      name: name,
-      phone: phone,
-      email: email,
-      address: address
+      qty,
+      name,
+      phone,
+      email,
+      address
     })
   })
   .then(res => res.text())
-  .then(data => {
-    console.log("Saved to sheet:", data);
+  .then(res => {
+    console.log("Saved:", res);
+
+    // 2️⃣ THEN open WhatsApp AFTER save is done
+    window.open(
+      "https://wa.me/923444318078?text=" + encodeURIComponent(msg)
+    );
+
+    document.getElementById("orderNumber").innerText =
+      "Order Number: " + orderNo;
+
+    document.getElementById("success").style.display = "flex";
   })
   .catch(err => {
-    console.log("Sheet error:", err);
+    console.log("Error:", err);
   });
 
-  // 2️⃣ THEN open WhatsApp (after request is sent)
-  setTimeout(() => {
-    window.open(
-      "https://wa.me/923444318078?text=" +
-      encodeURIComponent(msg)
-    );
-  }, 500);
-
-  // UI updates
-  document.getElementById("orderNumber").innerText =
-  "Order Number: " + orderNo;
-
-  document.getElementById("success").style.display = "flex";
-
   closeOrder();
-
-  setTimeout(() => {
-    window.location.href = "index.html";
-  }, 3000);
 }
+
+  
 
 filter("facewash");
   function toggleSidebar(v){
