@@ -234,6 +234,7 @@ function closeSuccess(){
 async function send() {
 
   const payload = {
+    orderNo: "GW-" + Math.floor(Math.random() * 90000 + 10000),
     name: document.getElementById("cname").value,
     phone: document.getElementById("phone").value,
     email: document.getElementById("email").value,
@@ -245,33 +246,20 @@ async function send() {
   try {
     const res = await fetch("https://script.google.com/macros/s/AKfycbxT2BEEDgbYqP0fYTYmOTRfuLEAOuuugscNKScyIMmwuk1ZGDafHlTQOxJBcAf1wm2p/exec", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify(payload)
     });
 
     const text = await res.text();
-    console.log("Google Sheet Response:", text);
+    console.log("Response:", text);
 
-    let result;
-    try {
-      result = JSON.parse(text);
-    } catch (e) {
-      result = { orderNo: "GW-" + Math.floor(Math.random() * 90000 + 10000) };
-    }
+    alert("Order sent successfully!");
 
-    document.getElementById("orderNumber").innerText =
-      "Order Number: " + result.orderNo;
-
-    document.getElementById("success").style.display = "flex";
-
-    closeOrder();
-
-    setTimeout(() => {
-      window.location.href = "index.html";
-    }, 3000);
-
-  } catch (error) {
-    console.log("Send Error:", error);
-    alert("Order failed. Please try again.");
+  } catch (err) {
+    console.log(err);
+    alert("Failed to send order");
   }
 }
 filter("facewash");
