@@ -262,11 +262,18 @@ New Order`;
     "https://wa.me/923444318078?text=" +
     encodeURIComponent(msg)
   );
- document.getElementById("orderNumber").innerText =
- "Order Number: " + orderNo;
-  document.getElementById("success").style.display="flex";
+
+  document.getElementById("orderNumber").innerText =
+  "Order Number: " + orderNo;
+
+  document.getElementById("success").style.display = "flex";
 
   closeOrder();
+
+  // 🔥 ADD THIS: redirect to homepage after 3 seconds
+  setTimeout(() => {
+    window.location.href = "index.html"; // change if your homepage has another name
+  }, 3000);
 }
 
 filter("facewash");
