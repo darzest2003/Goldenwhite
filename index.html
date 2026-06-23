@@ -275,24 +275,27 @@ Cash On Delivery`;
 
   // 2️⃣ GOOGLE SHEET CONNECTION (NEW)
   fetch("https://script.google.com/macros/s/AKfycbw8cYJIHfyj4m0F3eW7XYGtzEE6OYhm_cL0GwUaZQmAHBuvLjlMJPUjFZ1TNB6NU0sc/exec", {
-    method: "POST",
-    body: JSON.stringify({
-      orderNo: orderNo,
-      product: selected.name,
-      qty: qty,
-      name: name,
-      phone: phone,
-      email: email,
-      address: address
-    })
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    orderNo: orderNo,
+    product: selected.name,
+    qty: qty,
+    name: name,
+    phone: phone,
+    email: email,
+    address: address
   })
-  .then(res => res.text())
-  .then(data => {
-    console.log("Saved to sheet:", data);
-  })
-  .catch(err => {
-    console.log("Sheet error:", err);
-  });
+})
+.then(res => res.text())
+.then(data => {
+  console.log("Saved:", data);
+})
+.catch(err => {
+  console.log("Error:", err);
+});
 
   // UI updates
   document.getElementById("orderNumber").innerText =
