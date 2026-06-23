@@ -98,7 +98,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 </div>
 
   </section>
-  
+  <p id="orderNumber"></p>
   
 
 <!-- PRODUCTS -->
@@ -265,7 +265,8 @@ New Order`;
     "https://wa.me/923444318078?text=" +
     encodeURIComponent(msg)
   );
-
+ document.getElementById("orderNumber").innerText =
+ "Order Number: " + orderNo;
   document.getElementById("success").style.display="flex";
 
   closeOrder();
