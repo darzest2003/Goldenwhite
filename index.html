@@ -225,7 +225,12 @@ function closeModal(){
 function openOrder(){
   document.getElementById("order").style.display="flex";
 }
+function closeSuccess(){
+  document.getElementById("success").style.display = "none";
 
+  // optional: redirect to homepage
+  window.location.href = "index.html";
+}
 function send(){
 
   const orderNo =
