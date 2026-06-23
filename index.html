@@ -229,36 +229,47 @@ function openOrder(){
   document.getElementById("order").style.display="flex";
 }
 
-function closeOrder(){
-  document.getElementById("order").style.display="none";
-}
+function send(){
 
-  function closeSuccess(){
-    document.getElementById("success").style.display="none";
-  }
-  function send(){
+  const orderNo =
+  "GW-" +
+  Math.floor(Math.random()*90000+10000);
 
-  const msg=
-`🛒 Order
+  const msg =
+`🛒 GOLDEN WHITE ORDER
+
+Order No: ${orderNo}
 
 Product: ${selected.name}
-Qty: ${document.getElementById("qty").value}
+Quantity: ${document.getElementById("qty").value}
 
-Name: ${document.getElementById("cname").value}
-Phone: ${document.getElementById("phone").value}
-Email: ${document.getElementById("email").value}
-Address: ${document.getElementById("address").value}`;
+Customer Name:
+${document.getElementById("cname").value}
+
+Phone:
+${document.getElementById("phone").value}
+
+Email:
+${document.getElementById("email").value}
+
+Address:
+${document.getElementById("address").value}
+
+Payment:
+Cash On Delivery
+
+Status:
+New Order`;
 
   window.open(
-    "https://wa.me/923444318078?text="+
+    "https://wa.me/923444318078?text=" +
     encodeURIComponent(msg)
   );
 
   document.getElementById("success").style.display="flex";
 
   closeOrder();
-
-  }
+}
 
 filter("facewash");
   function toggleSidebar(v){
