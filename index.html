@@ -248,14 +248,14 @@ async function send() {
       body: JSON.stringify(payload)
     });
 
-    const text = await res.text();   // ✅ IMPORTANT FIX
-    console.log("Response:", text);
+    const text = await res.text();
+    console.log("Google Sheet Response:", text);
 
     let result;
     try {
-      result = JSON.parse(text);     // try convert if JSON exists
+      result = JSON.parse(text);
     } catch (e) {
-      result = { orderNo: "GW-" + Date.now() }; // fallback
+      result = { orderNo: "GW-" + Math.floor(Math.random() * 90000 + 10000) };
     }
 
     document.getElementById("orderNumber").innerText =
@@ -269,12 +269,11 @@ async function send() {
       window.location.href = "index.html";
     }, 3000);
 
-  } catch (err) {
-    console.log("ERROR:", err);
-    alert("Order failed");
+  } catch (error) {
+    console.log("Send Error:", error);
+    alert("Order failed. Please try again.");
   }
 }
-
 filter("facewash");
   function toggleSidebar(v){
   document.getElementById("sidebar").style.left =
