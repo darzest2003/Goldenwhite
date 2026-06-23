@@ -433,6 +433,10 @@ function closeOrder(){
   document.getElementById("order").style.display="none";
 }
 
+  function closeSuccess(){
+    document.getElementById("success").style.display="none";
+  }
+  
 function send(){
   const msg=
 `🛒 Order
@@ -448,6 +452,12 @@ Address: ${document.getElementById("address").value}`;
   window.open("https://wa.me/923444318078?text="+encodeURIComponent(msg));
 }
 
+  window.open(
+"https://wa.me/923444318078?text="+
+encodeURIComponent(msg)
+);
+
+document.getElementById("success").style.display="flex";
 function toggleSidebar(v){
   document.getElementById("sidebar").style.left=v?"0":"-260px";
   document.querySelector(".overlay").style.display=v?"block":"none";
