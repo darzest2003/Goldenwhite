@@ -165,11 +165,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <p>Your order has been prepared successfully.</p>
 
-<button onclick="closeSuccess()">
-
+<button class="btn" onclick="closeSuccess()">
 OK
-
 </button>
+
 
 </div>
 
@@ -262,6 +261,13 @@ Address: ${document.getElementById("address").value}`;
   }
 
 filter("facewash");
+  function toggleSidebar(v){
+  document.getElementById("sidebar").style.left =
+    v ? "0" : "-260px";
+
+  document.querySelector(".overlay").style.display =
+    v ? "block" : "none";
+  }
 
 let slideIndex=0;
 
