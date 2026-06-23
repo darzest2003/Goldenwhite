@@ -225,6 +225,10 @@ function closeModal(){
 function openOrder(){
   document.getElementById("order").style.display="flex";
 }
+
+function closeOrder(){
+  document.getElementById("order").style.display="none";
+}
 function closeSuccess(){
   document.getElementById("success").style.display = "none";
 
@@ -233,8 +237,9 @@ function closeSuccess(){
 }
 function send(){
 
-  const orderNo = "GW-" + Math.floor(Math.random()*90000+10000);
+  alert("Submit clicked");
 
+  const orderNo = "GW-" + Math.floor(Math.random()*90000+10000);
   const qty = document.getElementById("qty").value;
   const name = document.getElementById("cname").value;
   const phone = document.getElementById("phone").value;
