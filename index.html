@@ -254,7 +254,7 @@ Email: ${email}
 Address: ${address}`;
 
   // 1️⃣ FIRST: send to Google Script
-  fetch("https://script.google.com/macros/s/AKfycbw8cYJIHfyj4m0F3eW7XYGtzEE6OYhm_cL0GwUaZQmAHBuvLjlMJPUjFZ1TNB6NU0sc/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbwvSBOprTMX19uO2FbJWIQHYC7J__7Q-48ha_lLnnG47MSACwNmsnFl3e80ADIv60Q/exec", {
   method: "POST",
   body: new URLSearchParams({
     orderNo: orderNo,
@@ -266,9 +266,13 @@ Address: ${address}`;
     address: address
   })
 })
-  .then(res => res.text())
-  .then(res => {
-    console.log("Saved:", res);
+.then(res => res.text())
+.then(res => {
+  console.log("SUCCESS:", res);
+})
+.catch(err => {
+  console.log("ERROR:", err);
+});
 
     // 2️⃣ THEN open WhatsApp AFTER save is done
     window.open(
