@@ -225,7 +225,7 @@ function filter(cat){
 
   data[cat].forEach(p=>{
     g.innerHTML+=`
-      <div class="card" onclick='openProduct("${p.name}","${p.img}","${p.desc}")'>
+      <div class="card" onclick='openProduct("${p.name}","${p.img}","${p.desc}",${p.price})'>
         <img src="${p.img}">
         <h3>${p.name}</h3>
       </div>
@@ -236,8 +236,13 @@ function filter(cat){
 
 }
 
-function openProduct(n,i,d){
-  selected={name:n,img:i,desc:d};
+function openProduct(n,i,d,p){
+  selected={
+    name:n,
+    img:i,
+    desc:d,
+    price:p
+  };
 
   document.getElementById("img").src=i;
   document.getElementById("name").innerText=n;
