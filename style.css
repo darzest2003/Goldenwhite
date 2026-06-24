@@ -166,11 +166,13 @@ body{
   transform:scale(1.05);
   border-color:var(--gold);
 }
-
 .card img{
   width:100%;
+  height:220px;
+  object-fit:cover;
   border-radius:10px;
 }
+
 
 /* ================= ABOUT + FAQ ================= */
 .about, .faq{
@@ -389,4 +391,17 @@ input,textarea{
 .explore-btn:hover{
   background:#c9a227;
   color:#fff;
+}
+.price{
+  color:#c9a227;
+  font-size:18px;
+  font-weight:700;
+  margin-top:8px;
+}
+
+#price{
+  color:#c9a227;
+  font-size:18px;
+  font-weight:700;
+  margin:10px 0;
 }
