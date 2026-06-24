@@ -123,7 +123,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     <button class="close-modal" onclick="closeModal()">✕</button>
 
     <img id="img" style="width:100%;margin-bottom:10px;">
+    
     <h2 id="name"></h2>
+
+    <p id="price"></p>
+
     <p id="desc"></p>
 
     <div class="qty-box">
@@ -224,12 +228,12 @@ function filter(cat){
 
   data[cat].forEach(p=>{
     g.innerHTML+=`
-      <div class="card" onclick='openProduct("${p.name}","${p.img}","${p.desc}",${p.price})'>
-        <img src="${p.img}">
-        <h3>${p.name}</h3>
-      </div>
-    `;
-  });
+  <div class="card" onclick='openProduct("${p.name}","${p.img}","${p.desc}",${p.price})'>
+    <img src="${p.img}">
+    <h3>${p.name}</h3>
+    <p class="price">Rs. ${p.price}</p>
+  </div>
+`;
 
   toggleSidebar(false);
 
@@ -245,7 +249,11 @@ function openProduct(n,i,d,p){
 
   document.getElementById("img").src=i;
   document.getElementById("name").innerText=n;
-  document.getElementById("desc").innerText=d;
+
+document.getElementById("price").innerHTML =
+  "<b>Price:</b> Rs. " + p;
+
+document.getElementById("desc").innerText=d;
 
   document.getElementById("modal").style.display="flex";
 }
