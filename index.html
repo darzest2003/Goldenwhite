@@ -175,11 +175,39 @@ OK
 <script>
 
 let selected=null;
+  function getShipping(qty){
+
+  qty = Number(qty);
+
+  if(qty <= 2){
+    return 150;
+  }
+
+  if(qty <= 5){
+    return 250;
+  }
+
+  if(qty <= 8){
+    return 450;
+  }
+
+  return 0;
+  }
 
 const data={
   facewash:[
-    {name:"Rice Face Wash",img:"rice.png",desc:"100ml Rice Face Wash removes dirt, oil & gives natural glow."},
-    {name:"Charcoal Face Wash",img:"charcoal.png",desc:"Deep cleansing detox formula for acne-free skin."}
+    {
+      name:"Rice Face Wash",
+      price:450,
+      img:"rice.png",
+      desc:"100ml Rice Face Wash removes dirt, oil & gives natural glow."
+    },
+    {
+      name:"Charcoal Face Wash",
+      price:450,
+      img:"charcoal.png",
+      desc:"Deep cleansing detox formula for acne-free skin."
+    }
   ]
 };
 
@@ -233,15 +261,30 @@ function closeSuccess(){
 }
 async function send() {
 
-  const payload = {
-    orderNo: "GW-" + Math.floor(Math.random() * 90000 + 10000),
-    name: document.getElementById("cname").value,
-    phone: document.getElementById("phone").value,
-    email: document.getElementById("email").value,
-    address: document.getElementById("address").value,
-    product: selected.name,
-    qty: document.getElementById("qty").value
-  };
+  const qty = Number(document.getElementById("qty").value);
+
+const shipping = getShipping(qty);
+
+const subtotal = selected.price * qty;
+
+const total = subtotal + shipping;
+
+const payload = {
+  orderNo: "GW-" + Math.floor(Math.random() * 90000 + 10000),
+
+  name: document.getElementById("cname").value,
+  phone: document.getElementById("phone").value,
+  email: document.getElementById("email").value,
+  address: document.getElementById("address").value,
+
+  product: selected.name,
+  qty: qty,
+
+  unitPrice: selected.price,
+  subtotal: subtotal,
+  shipping: shipping,
+  total: total
+};
 
   try {
     const res = await fetch("https://script.google.com/macros/s/AKfycbxT2BEEDgbYqP0fYTYmOTRfuLEAOuuugscNKScyIMmwuk1ZGDafHlTQOxJBcAf1wm2p/exec", {
