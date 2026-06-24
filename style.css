@@ -353,18 +353,7 @@ input,textarea{
   border-radius:10px;
   text-align:center;
 }
-.slide.active img{
-  animation: bannerMove 12s linear infinite alternate;
-}
 
-@keyframes bannerMove{
-  0%{
-    transform: translateX(-30px);
-  }
-
-  100%{
-    transform: translateX(30px);
-  }
 }
 .hero-actions{
   display:flex;
