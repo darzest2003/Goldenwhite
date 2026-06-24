@@ -290,43 +290,7 @@ input,textarea{
   margin:0 auto 12px auto;
   background:linear-gradient(90deg,transparent,#c9a227,transparent);
 }  
-/* PRODUCT BANNER */
-.product-banner{
-  width:100%;
-  max-width:700px;
-  margin:20px auto;
-  text-align:center;
-}
 
-.product-banner img{
-  width:250px;
-  max-width:95%;
-  height:auto;
-  border-radius:12px;
-}
-
-.slider{
-  width:90%;
-  max-width:1000px;
-  margin:30px auto;
-  position:relative;
-  overflow:hidden;
-  border-radius:15px;
-}
-
-.slide{
-  display:none;
-}
-
-.slide.active{
-  display:block;
-}
-
-.slide img{
-  width:100%;
-  display:block;
-  border-radius:15px;
-}
 .qty-box{
   display:flex;
   justify-content:center;
