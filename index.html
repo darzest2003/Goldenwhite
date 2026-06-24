@@ -228,25 +228,28 @@ const data={
 
 function filter(cat){
 
-  const g=document.getElementById("grid");
+  const g = document.getElementById("grid");
 
-  g.innerHTML="";
+  g.innerHTML = "";
 
   if(!data[cat]){
-    g.innerHTML="<h3>Coming Soon</h3>";
+    g.innerHTML = "<h3>Coming Soon</h3>";
     toggleSidebar(false);
     return;
   }
 
   data[cat].forEach(p=>{
-   g.innerHTML+=`
-  <div class="card" onclick="openProductByIndex(${index})">
-    <img src="${p.img}">
-    <h3>${p.name}</h3>
-    <p class="price">Rs. ${p.price}</p>
-  </div>
-`; 
-});
+
+    g.innerHTML += `
+      <div class="card" onclick='openProduct(${JSON.stringify(p).replace(/"/g,"&quot;")})'>
+        <img src="${p.img}">
+        <h3>${p.name}</h3>
+        <p class="price">Rs. ${p.price}</p>
+      </div>
+    `;
+
+  });
+
   toggleSidebar(false);
 
 }
@@ -289,6 +292,9 @@ function openProduct(product){
 function closeModal(){
   document.getElementById("modal").style.display="none";
 }
+  function closeOrder(){
+  document.getElementById("order").style.display="none";
+  }
 
 function openOrder(){
   document.getElementById("order").style.display="flex";
