@@ -425,3 +425,48 @@ input,textarea{
 .thumbs img:hover{
   transform:scale(1.1);
 }
+@media (max-width:768px){
+
+  .hero h1{
+    font-size:36px;
+  }
+
+  .header-tag{
+    display:none;
+  }
+
+  .section{
+    padding:15px;
+  }
+
+  .card{
+    padding:8px;
+  }
+
+  .card img{
+    height:180px;
+    object-fit:cover;
+  }
+
+  .modal-box{
+    width:95%;
+    max-height:90vh;
+    overflow-y:auto;
+  }
+
+  .gallery img{
+    width:100%;
+  }
+
+  .hero-actions{
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .shop-btn,
+  .explore-btn{
+    width:90%;
+    text-align:center;
+  }
+
+}
