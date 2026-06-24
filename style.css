@@ -402,3 +402,38 @@ input,textarea{
     transform: translateX(30px);
   }
 }
+.hero-actions{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin:25px 0;
+  flex-wrap:wrap;
+}
+
+.shop-btn,
+.explore-btn{
+  text-decoration:none;
+  padding:14px 28px;
+  border-radius:30px;
+  font-weight:600;
+  transition:.3s;
+}
+
+.shop-btn{
+  background:#c9a227;
+  color:#fff;
+}
+
+.explore-btn{
+  border:2px solid #c9a227;
+  color:#c9a227;
+}
+
+.shop-btn:hover{
+  transform:translateY(-3px);
+}
+
+.explore-btn:hover{
+  background:#c9a227;
+  color:#fff;
+}
