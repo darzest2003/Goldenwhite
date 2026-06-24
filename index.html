@@ -122,7 +122,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
   <div class="modal-box">
     <button class="close-modal" onclick="closeModal()">✕</button>
 
-    <img id="img" style="width:100%;margin-bottom:10px;">
+<img id="img" style="width:100%;margin-bottom:10px;">
+
+<div id="thumbs" class="thumbs"></div>
     
     <h2 id="name"></h2>
 
@@ -196,23 +198,33 @@ let selected=null;
 
   return 0;
   }
-
 const data={
   facewash:[
     {
       name:"Rice Face Wash",
       price:450,
-      img:"rice.png",
+      img:"rice1.png",
+      images:[
+        "rice1.png",
+        "rice2.png",
+        "rice3.png"
+      ],
       desc:"100ml Rice Face Wash removes dirt, oil & gives natural glow."
     },
     {
       name:"Charcoal Face Wash",
       price:450,
-      img:"charcoal.png",
+      img:"charcoal1.png",
+      images:[
+        "charcoal1.png",
+        "charcoal2.png",
+        "charcoal3.png"
+      ],
       desc:"Deep cleansing detox formula for acne-free skin."
     }
   ]
 };
+
 
 function filter(cat){
 
@@ -228,7 +240,7 @@ function filter(cat){
 
   data[cat].forEach(p=>{
     g.innerHTML+=`
-  <div class="card" onclick='openProduct("${p.name}","${p.img}","${p.desc}",${p.price})'>
+  <div class="card" onclick='openProduct(${JSON.stringify(p).replace(/"/g,"&quot;")})'>
     <img src="${p.img}">
     <h3>${p.name}</h3>
     <p class="price">Rs. ${p.price}</p>
@@ -239,23 +251,40 @@ function filter(cat){
 
 }
 
-function openProduct(n,i,d,p){
-  selected={
-    name:n,
-    img:i,
-    desc:d,
-    price:p
-  };
+function openProduct(product){
 
-  document.getElementById("img").src=i;
-  document.getElementById("name").innerText=n;
+  selected = product;
 
-document.getElementById("price").innerHTML =
-  "<b>Price:</b> Rs. " + p;
+  document.getElementById("img").src =
+    product.images[0];
 
-document.getElementById("desc").innerText=d;
+  document.getElementById("name").innerText =
+    product.name;
 
-  document.getElementById("modal").style.display="flex";
+  document.getElementById("price").innerHTML =
+    "<b>Price:</b> Rs. " + product.price;
+
+  document.getElementById("desc").innerText =
+    product.desc;
+
+  let thumbs="";
+
+  product.images.forEach(img=>{
+
+    thumbs += `
+      <img
+        src="${img}"
+        onclick="document.getElementById('img').src='${img}'"
+      >
+    `;
+
+  });
+
+  document.getElementById("thumbs").innerHTML =
+    thumbs;
+
+  document.getElementById("modal").style.display =
+    "flex";
 }
 function closeModal(){
   document.getElementById("modal").style.display="none";
