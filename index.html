@@ -239,13 +239,13 @@ function filter(cat){
   }
 
   data[cat].forEach(p=>{
-    g.innerHTML+=`
-  <div class="card" onclick='openProduct(${JSON.stringify(p).replace(/"/g,"&quot;")})'>
+   g.innerHTML+=`
+  <div class="card" onclick="openProductByIndex(${index})">
     <img src="${p.img}">
     <h3>${p.name}</h3>
     <p class="price">Rs. ${p.price}</p>
   </div>
-`;
+`; 
 });
   toggleSidebar(false);
 
