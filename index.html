@@ -342,11 +342,12 @@ const payload = {
   body: JSON.stringify(payload)
 });
 
-    const text = await res.text();
-    console.log("Response:", text);
+    setTimeout(()=>{
 
-    alert("Order sent successfully!");
+  document.getElementById("order").style.display="none";
+  document.getElementById("success").style.display="flex";
 
+},500);
   } catch (err) {
     console.log(err);
     alert("Failed to send order");
