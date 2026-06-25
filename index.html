@@ -342,9 +342,6 @@ shipping:shipping,
 total:total
 
 };
-
-
-try {
 const res = await fetch(
 "https://script.google.com/macros/s/AKfycbynuEaQoBpaMwjQAIsKK1RNw-9ADvUk7oqhW8QIeC6z3LJxhYcPkMJU0gEBdFqpzVgD/exec",
 {
@@ -356,26 +353,19 @@ body: JSON.stringify(payload)
 }
 );
 
-  const text = await res.text();
+const text = await res.text();
 console.log("SERVER RESPONSE:", text);
-
 
 if(text.includes("SUCCESS")){
 
-
 document.getElementById("order").style.display="none";
-
 document.getElementById("success").style.display="flex";
 
-
-}
-
-else{
+}else{
 
 throw new Error(text);
 
 }
-
 
 }
 
