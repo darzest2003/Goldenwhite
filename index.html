@@ -331,6 +331,11 @@ async function send() {
 
 try {
 
+if(!selected){
+alert("Please select a product first");
+return;
+}
+
 const qty = Number(document.getElementById("qty").value);
 
 const shipping = getShipping(qty);
