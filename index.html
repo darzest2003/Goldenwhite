@@ -334,14 +334,12 @@ const payload = {
 
 try {
   const res = await fetch(
-    "https://script.google.com/macros/s/AKfycbxK8h6hbmgth-aCodMaNi43AXXZ-LuYTRWOVpMNievEOmOhuh56SHvBWiUXDM5Hv8uq/exec",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(payload)
-    }
+"https://script.google.com/macros/s/AKfycbxK8h6hbmgth-aCodMaNi43AXXZ-LuYTRWOVpMNievEOmOhuh56SHvBWiUXDM5Hv8uq/exec",
+{
+method:"POST",
+body:JSON.stringify(payload)
+}
+);
   );
 
   const text = await res.text();
