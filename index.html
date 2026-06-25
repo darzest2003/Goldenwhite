@@ -332,36 +332,31 @@ const payload = {
   total: total
 };
 
-  try {
-    const res = await fetch(
-"https://script.google.com/macros/s/AKfycbzU7cd6lgiJBkPgX3nvy-sVFOqOpsUigZtIzf-kWSHNyHX-S_x6nA4MKBgnbQjVmX_Y/exec",
-{
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify(payload)
-});
-    setTimeout(()=>{
+try {
+  const res = await fetch(
+    "https://script.google.com/macros/s/AKfycbzU7cd6lgiJBkPgX3nvy-sVFOqOpsUigZtIzf-kWSHNyHX-S_x6nA4MKBgnbQjVmX_Y/exec",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    }
+  );
 
-  document.getElementById("order").style.display="none";
-  document.getElementById("success").style.display="flex";
+  const text = await res.text();
 
-},500);
-  } catch (err) {
-    console.log(err);
-    alert("Failed to send order");
-  }
-}
-filter("facewash");
-  function toggleSidebar(v){
-  document.getElementById("sidebar").style.left =
-    v ? "0" : "-260px";
-
-  document.querySelector(".overlay").style.display =
-    v ? "block" : "none";
+  if (text.includes("SUCCESS")) {
+    document.getElementById("order").style.display = "none";
+    document.getElementById("success").style.display = "flex";
+  } else {
+    throw new Error(text);
   }
 
+} catch (err) {
+  console.log(err);
+  alert("Failed to send order");
+}  
 
 
 function changeQty(val){
