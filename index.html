@@ -409,9 +409,9 @@ throw new Error(text);
 
 catch(err){
 
-console.log(err);
+console.log("ERROR:", err);
 
-alert("Failed to send order");
+alert("Failed: " + err.message);
 
 }
 
