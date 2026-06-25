@@ -307,7 +307,7 @@ function closeSuccess(){
 }
 async function send() {
 
-  const qty = Number(document.getElementById("qty").value);
+const qty = Number(document.getElementById("qty").value);
 
 const shipping = getShipping(qty);
 
@@ -315,47 +315,86 @@ const subtotal = selected.price * qty;
 
 const total = subtotal + shipping;
 
+
 const payload = {
-  orderNo: "GW-" + Math.floor(Math.random() * 90000 + 10000),
 
-  name: document.getElementById("cname").value,
-  phone: document.getElementById("phone").value,
-  email: document.getElementById("email").value,
-  address: document.getElementById("address").value,
+orderNo:"GW-" + Math.floor(Math.random()*90000+10000),
 
-  product: selected.name,
-  qty: qty,
+name:document.getElementById("cname").value,
 
-  unitPrice: selected.price,
-  subtotal: subtotal,
-  shipping: shipping,
-  total: total
+phone:document.getElementById("phone").value,
+
+email:document.getElementById("email").value,
+
+address:document.getElementById("address").value,
+
+
+product:selected.name,
+
+qty:qty,
+
+unitPrice:selected.price,
+
+subtotal:subtotal,
+
+shipping:shipping,
+
+total:total
+
 };
 
+
 try {
-  const res = await fetch(
+
+
+const res = await fetch(
+
 "https://script.google.com/macros/s/AKfycbxK8h6hbmgth-aCodMaNi43AXXZ-LuYTRWOVpMNievEOmOhuh56SHvBWiUXDM5Hv8uq/exec",
+
 {
+
 method:"POST",
+
 body:JSON.stringify(payload)
+
 }
+
 );
-  
 
-  const text = await res.text();
 
-  if (text.includes("SUCCESS")) {
-    document.getElementById("order").style.display = "none";
-    document.getElementById("success").style.display = "flex";
-  } else {
-    throw new Error(text);
-  }
+const text = await res.text();
 
-} catch (err) {
-  console.log(err);
-  alert("Failed to send order");
-}  
+
+if(text.includes("SUCCESS")){
+
+
+document.getElementById("order").style.display="none";
+
+document.getElementById("success").style.display="flex";
+
+
 }
+
+else{
+
+throw new Error(text);
+
+}
+
+
+}
+
+catch(err){
+
+console.log(err);
+
+alert("Failed to send order");
+
+}
+
+
+}
+
 
 function changeQty(val){
 
