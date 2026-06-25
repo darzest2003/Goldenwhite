@@ -53,9 +53,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
   <a href="#products" class="explore-btn">
     Explore Products
   </a>
-</div>
-  
-  
+    
   </div>
   <section class="offer">
   <h2>Limited Time Offer</h2>
@@ -307,6 +305,8 @@ function closeSuccess(){
 }
 async function send() {
 
+try {
+
 const qty = Number(document.getElementById("qty").value);
 
 const shipping = getShipping(qty);
@@ -328,7 +328,6 @@ email:document.getElementById("email").value,
 
 address:document.getElementById("address").value,
 
-
 product:selected.name,
 
 qty:qty,
@@ -342,30 +341,40 @@ shipping:shipping,
 total:total
 
 };
+
+
 const res = await fetch(
 "https://script.google.com/macros/s/AKfycbxJ8h0QH0ygRLnYaYJxU-wEO0t0tiBhmZEHs20HNIP5tNDC8eL2Cea3GdJKTjaNjxWjHQ/exec",
 {
-method: "POST",
-headers: {
-  "Content-Type": "text/plain"
+method:"POST",
+
+headers:{
+"Content-Type":"text/plain"
 },
-body: JSON.stringify(payload)
-}
-);
+
+body:JSON.stringify(payload)
+
+});
+
 
 const text = await res.text();
+
 console.log("SERVER RESPONSE:", text);
+
 
 if(text.includes("SUCCESS")){
 
 document.getElementById("order").style.display="none";
+
 document.getElementById("success").style.display="flex";
+
 
 }else{
 
 throw new Error(text);
 
 }
+
 
 }
 
@@ -377,8 +386,8 @@ alert("Failed to send order");
 
 }
 
-
 }
+
 
 
 function changeQty(val){
