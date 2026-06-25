@@ -345,19 +345,16 @@ total:total
 
 
 try {
-
-
 const res = await fetch(
-  "https://script.google.com/macros/s/AKfycbynuEaQoBpaMwjQAIsKK1RNw-9ADvUk7oqhW8QIeC6z3LJxhYcPkMJU0gEBdFqpzVgD/exec",
-  {
-    method: "POST",
-    headers: {
-      "Content-Type": "text/plain"
-    },
-    body: JSON.stringify(payload)
-  }
+"https://script.google.com/macros/s/AKfycbynuEaQoBpaMwjQAIsKK1RNw-9ADvUk7oqhW8QIeC6z3LJxhYcPkMJU0gEBdFqpzVgD/exec",
+{
+method: "POST",
+headers: {
+  "Content-Type": "text/plain"
+},
+body: JSON.stringify(payload)
+}
 );
-
 
 const text = await res.text();
   const text = await res.text();
