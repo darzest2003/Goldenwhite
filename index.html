@@ -176,8 +176,32 @@ OK
 <a class="whatsapp" href="https://wa.me/923444318078"><i class="fab fa-whatsapp"></i></a>
 
 <script>
-
 let selected=null;
+  function toggleSidebar(show){
+
+let sidebar=document.getElementById("sidebar");
+
+let overlay=document.querySelector(".overlay");
+
+
+if(show){
+
+sidebar.style.left="0";
+
+overlay.style.display="block";
+
+}
+
+else{
+
+sidebar.style.left="-300px";
+
+overlay.style.display="none";
+
+}
+
+  }
+  
   function getShipping(qty){
 
   qty = Number(qty);
