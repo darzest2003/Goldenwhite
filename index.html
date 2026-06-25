@@ -333,15 +333,15 @@ const payload = {
 };
 
   try {
-    const res = await fetch("https://script.google.com/macros/s/AKfycbx-JJ4Talf0WGQJKTrXuuN0sQHEFCD97Ka4l2L2MuBMGPWC1B3XjBOQtG5RJ0Q6hYFM/exec", {
+    const res = await fetch(
+"https://script.google.com/macros/s/AKfycbx-JJ4Talf0WGQJKTrXuuN0sQHEFCD97Ka4l2L2MuBMGPWC1B3XjBOQtG5RJ0Q6hYFM/exec",
+{
   method: "POST",
-  mode: "no-cors",
   headers: {
     "Content-Type": "application/json"
   },
   body: JSON.stringify(payload)
 });
-
     setTimeout(()=>{
 
   document.getElementById("order").style.display="none";
